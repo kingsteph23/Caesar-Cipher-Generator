@@ -47,15 +47,15 @@ find the ciphers/ and make a the foundations of everything(a class/ciphers)
 
 class regciphers{
 
-string ciphers[10];
+string ciphers[10]; //cipher messages 
 string conversionchart[26] = {"A","B","C","D","E","F"
                         ,"G","H","I","J","K","L",
                         "M","N","O","P","Q","R","S",
-                        "T","U","V","W","X","Y","Z"};
-int tries;
+                        "T","U","V","W","X","Y","Z"}; //conversion chart
+int tries;//user has 3 tries
 
 
-public:
+public: //public class
   
 
 //reg encryption
@@ -94,19 +94,19 @@ void decipher(){
 }
 
 
-
+//amount of hints/ hints for each messages
 void hints(){
 
 
 
-    
+
 }
 };
 
-
+// main class
 int main(){
 
-
+//object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
 
 encrypter.encryption();
