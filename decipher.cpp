@@ -48,49 +48,86 @@ find the ciphers/ and make a the foundations of everything(a class/ciphers)
 class regciphers{
 
 string ciphers[10]; //cipher messages 
-string conversionchart[26] = {"A","B","C","D","E","F"
-                        ,"G","H","I","J","K","L",
-                        "M","N","O","P","Q","R","S",
-                        "T","U","V","W","X","Y","Z"}; //conversion chart
+char conversionchart[26] = {'a','b','c','d','e','f'
+, 'g', 'h','i','j','k','l',
+'m','n','o','p','q','r','s',
+'t','u','v','w','x','y','z'}; //conversion chart
 int tries;//user has 3 tries
-
+int i;
+int j;
+int encrypter;//encrpyter formula
+char encryptermess;
+char gemini;
 
 public: //public class
   
 
 //reg encryption
 void encryption(){
-
+ int modifier;
     //ciphers
-    string ci1 = ciphers[0] = "stephen was here";
+    //string ci1 = ciphers[0] = "stephen was here";
+    string ci1 = ciphers[0] = "stop thief";
     string ci2 = ciphers[1] = " sly fox, try pox, old slots";
     string ci3 = ciphers[2] = "the quick brown fox jumps over the lazy dog";
     string ci4 = ciphers[3] = "operation nimord is a go";
-    string ci5 = ciphers[4] = "Geronimo Geronimo Geronimo";
+    string ci5 = ciphers[4] = "geronimo geronimo geronimo";
 
-
+cout << ci1 << endl;
+cout << endl;
 //find way to encrypt properly from first phrase to alphapet with caesars cipher PROPERLY
-for(int i = 0; i < ci1.size(); i++){
-    for(int j = 0; j < conversionchart[26].size(); j++){
-       //if for statement if(){
+for( i = 0; i < ci1.length(); i++){
+ for( j =0; j<26; j++){
+
+
+     
+           /*
+           encrpytion:
+           1. compare if the letters in the setence and coversion chart match
+           2. if they match, apply the ceasers cipher regular formula 
+           3. use the modded letters into a new array
+           4. output the modded encrpyted phrase 
            
-    
+           
+           */
+          
+//cout << ci1[i] << endl;
 
+if(conversionchart[j] == ci1[i]){
+    ci1[i] = j;
 
+  
+         //cout << j << " " ; //phrase is seperated into numbers
+            
+           //formula to encrypt the phrase
+           encrypter = (j+15)%26;
+        
+        
+          // cout << encrypter << endl;	
 
+        
+if(j = encrypter){
 
+           
+                 encrypter = conversionchart[j];
+            encryptermess =  encrypter;
+            gemini = encryptermess;
+             
+     
+     }
+ cout << gemini << " ";
+}
 
 
 }
-
+ 
 }
+ 
 }
-
-
 
 //decipher
 void decipher(){
-
+cout << gemini << endl;
 }
 
 
