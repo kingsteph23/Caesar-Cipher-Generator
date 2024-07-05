@@ -53,11 +53,11 @@ char conversionchart[26] = {'a','b','c','d','e','f'
 'm','n','o','p','q','r','s',
 't','u','v','w','x','y','z'}; //conversion chart
 int tries;//user has 3 tries
-int i;
-int j;
+int i; // for loop for message
+int j; //for loop for conversion chart
 int encrypter;//encrpyter formula
-char encryptermess;
-char gemini;
+string gemini;//holder for the new encrypted message
+
 
 public: //public class
   
@@ -65,6 +65,7 @@ public: //public class
 //reg encryption
 void encryption(){
  int modifier;
+ 
     //ciphers
     //string ci1 = ciphers[0] = "stephen was here";
     string ci1 = ciphers[0] = "stop thief";
@@ -73,28 +74,15 @@ void encryption(){
     string ci4 = ciphers[3] = "operation nimord is a go";
     string ci5 = ciphers[4] = "geronimo geronimo geronimo";
 
-cout << ci1 << endl;
+cout << "Reg Message: " << ci1 << endl;
 cout << endl;
 //find way to encrypt properly from first phrase to alphapet with caesars cipher PROPERLY
-for( i = 0; i < ci1.length(); i++){
- for( j =0; j<26; j++){
+for( i = 0; i < ci1.length(); i++){ // first statment 
+ for( j =0; j<26; j++){ //caesar converstion
 
-
-     
-           /*
-           encrpytion:
-           1. compare if the letters in the setence and coversion chart match
-           2. if they match, apply the ceasers cipher regular formula 
-           3. use the modded letters into a new array
-           4. output the modded encrpyted phrase 
-           
-           
-           */
-          
-//cout << ci1[i] << endl;
-
+//if the conversionchart and phrase have the same character
 if(conversionchart[j] == ci1[i]){
-    ci1[i] = j;
+    ci1[i] = j; // character of sentence is equivalent to conversion chart letter
 
   
          //cout << j << " " ; //phrase is seperated into numbers
@@ -105,29 +93,21 @@ if(conversionchart[j] == ci1[i]){
         
           // cout << encrypter << endl;	
 
-        
+        //conversion chart is equivlanet to encrypter value
 if(j = encrypter){
-
-           
-                 encrypter = conversionchart[j];
-            encryptermess =  encrypter;
-            gemini = encryptermess;
-             
-     
+// encrypter number is equal to conversion chat index
+         encrypter = conversionchart[j];
+         gemini += encrypter; // converts the number to a string
      }
- cout << gemini << " ";
 }
-
-
+} 
 }
- 
-}
- 
+cout <<"Encrypted message: " << gemini << " "; //actual encrypted message
 }
 
 //decipher
 void decipher(){
-cout << gemini << endl;
+cout <<"Encrypted message: " << gemini << " ";
 }
 
 
@@ -146,7 +126,7 @@ int main(){
 //object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
 
-encrypter.encryption();
+encrypter.decipher();
 cout << endl;
 
 
