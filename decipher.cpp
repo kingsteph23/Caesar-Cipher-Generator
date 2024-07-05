@@ -9,7 +9,7 @@ using namespace std;
 //each are random
 // game goes up to x amount of times
 
-//some random decipher is based on potiental pre made phrase
+//some random decipher is based on potiental pre made phrase✅
 //user has 3x tries to decipher, than answer is revealved
 //might have option to  
 
@@ -55,18 +55,12 @@ char conversionchart[26] = {'a','b','c','d','e','f'
 int tries;//user has 3 tries
 int i; // for loop for message
 int j; //for loop for conversion chart
+
+int s;
+int t;
 int encrypter;//encrpyter formula
-string gemini;//holder for the new encrypted message
-
-
-public: //public class
-  
-
-//reg encryption
-void encryption(){
- int modifier;
- 
-    //ciphers
+int decrypter;
+   //ciphers
     //string ci1 = ciphers[0] = "stephen was here";
     string ci1 = ciphers[0] = "stop thief";
     string ci2 = ciphers[1] = " sly fox, try pox, old slots";
@@ -74,8 +68,19 @@ void encryption(){
     string ci4 = ciphers[3] = "operation nimord is a go";
     string ci5 = ciphers[4] = "geronimo geronimo geronimo";
 
-cout << "Reg Message: " << ci1 << endl;
-cout << endl;
+
+
+public: //public class
+  string gemini;//holder for the new encrypted message
+  string apollo = " ";
+
+//reg encryption
+void encryption(){
+ int modifier;
+ 
+ 
+//cout << "Reg Message: " << ci1 << endl;
+//cout << endl;
 //find way to encrypt properly from first phrase to alphapet with caesars cipher PROPERLY
 for( i = 0; i < ci1.length(); i++){ // first statment 
  for( j =0; j<26; j++){ //caesar converstion
@@ -102,14 +107,43 @@ if(j = encrypter){
 }
 } 
 }
-cout <<"Encrypted message: " << gemini << " "; //actual encrypted message
+//cout <<"Encrypted message: " << gemini << " "; //actual encrypted message
 }
 
 //decipher
+//attempt to view the entire decrpytion message
 void decipher(){
-cout <<"Encrypted message: " << gemini << " ";
-}
+cout <<"Encrypted message: " << gemini << " "; // encrypted message
 
+
+for( s = 0; s < gemini.length(); s++){ // first statment 
+ for( t =0; t<26; t++){ //caesar converstion
+
+//if the conversionchart and phrase have the same character
+if(conversionchart[t] == gemini[s] ){
+      gemini[s] = t ; // character of sentence is equivalent to conversion chart letter
+
+  
+         //cout << j << " " ; //phrase is seperated into numbers
+            
+           //formula to encrypt the phrase
+           decrypter = (t-15)%26;
+        
+        
+          // cout << encrypter << endl;	
+
+        //conversion chart is equivlanet to encrypter value
+if( t = decrypter ){
+// encrypter number is equal to conversion chat index
+         decrypter = conversionchart[t];
+         apollo += decrypter; // converts the number to a string
+     }
+}
+} 
+} 
+cout << endl;
+cout <<"decrypted message: " << apollo << " "; //actual encrypted message
+}
 
 //amount of hints/ hints for each messages
 void hints(){
@@ -126,6 +160,8 @@ int main(){
 //object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
 
+encrypter.encryption();
+//cout << endl;
 encrypter.decipher();
 cout << endl;
 
