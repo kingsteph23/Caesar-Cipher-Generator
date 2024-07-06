@@ -56,13 +56,13 @@ int tries;//user has 3 tries
 int i; // for loop for message
 int j; //for loop for conversion chart
 
-int s;
-int t;
+int s;// for loop for decrypted message
+int t;// for loop for decrypted conversion chart
 int encrypter;//encrpyter formula
-int decrypter;
+int decrypter; //decryption formula
    //ciphers
     //string ci1 = ciphers[0] = "stephen was here";
-    string ci1 = ciphers[0] = "stop thief";
+    string ci1 = ciphers[0] = "stephen was here";
     string ci2 = ciphers[1] = " sly fox, try pox, old slots";
     string ci3 = ciphers[2] = "the quick brown fox jumps over the lazy dog";
     string ci4 = ciphers[3] = "operation nimord is a go";
@@ -71,13 +71,11 @@ int decrypter;
 
 
 public: //public class
-  string gemini;//holder for the new encrypted message
-  string apollo = " ";
+  string encryptgemini;//holder for the new encrypted message
+  string decryptapollo = " "; //holfer for decrypted message
 
 //reg encryption
 void encryption(){
- int modifier;
- 
  
 //cout << "Reg Message: " << ci1 << endl;
 //cout << endl;
@@ -102,47 +100,46 @@ if(conversionchart[j] == ci1[i]){
 if(j = encrypter){
 // encrypter number is equal to conversion chat index
          encrypter = conversionchart[j];
-         gemini += encrypter; // converts the number to a string
+         encryptgemini += encrypter; // converts the number to a string
      }
 }
 } 
 }
-//cout <<"Encrypted message: " << gemini << " "; //actual encrypted message
+//cout <<" message: " << gemini << " "; //actual encrypted message
 }
 
 //decipher
 //attempt to view the entire decrpytion message
 void decipher(){
-cout <<"Encrypted message: " << gemini << " "; // encrypted message
+cout <<"Encrypted message: " << encryptgemini << " "; // encrypted message
 
 
-for( s = 0; s < gemini.length(); s++){ // first statment 
+for( s = 0; s < encryptgemini.length(); s++){ // first statment 
  for( t =0; t<26; t++){ //caesar converstion
 
 //if the conversionchart and phrase have the same character
-if(conversionchart[t] == gemini[s] ){
-      gemini[s] = t ; // character of sentence is equivalent to conversion chart letter
+if(conversionchart[t] == encryptgemini[s] ){
+      encryptgemini[s] = t ; // character of sentence is equivalent to conversion chart letter
 
   
          //cout << j << " " ; //phrase is seperated into numbers
             
            //formula to encrypt the phrase
-           decrypter = (t-15)%26;
-        
+           decrypter =  (t-15 +26)%26;
         
           // cout << encrypter << endl;	
 
         //conversion chart is equivlanet to encrypter value
-if( t = decrypter ){
-// encrypter number is equal to conversion chat index
+if( t = decrypter  ){
+// decrypter number is equal to conversion chat index
          decrypter = conversionchart[t];
-         apollo += decrypter; // converts the number to a string
+         decryptapollo += decrypter; // converts the number to a string
      }
 }
 } 
 } 
 cout << endl;
-cout <<"decrypted message: " << apollo << " "; //actual encrypted message
+cout <<"decrypted message: " << decryptapollo << " "; //actual encrypted message
 }
 
 //amount of hints/ hints for each messages
