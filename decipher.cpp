@@ -4,8 +4,8 @@
 #include <cmath>
 using namespace std;
 
-//decipher function
-//list of potiental deciphers
+//decipher function✅
+//list of potiental deciphers✅
 //each are random
 // game goes up to x amount of times
 
@@ -58,8 +58,8 @@ int j; //for loop for conversion chart
 
 int s;// for loop for decrypted message
 int t;// for loop for decrypted conversion chart
-int encrypter;//encrpyter formula
-int decrypter; //decryption formula
+char encrypter;//encrpyter formula
+char decrypter; //decryption formula
    //ciphers
     //string ci1 = ciphers[0] = "stephen was here";
     string ci1 = ciphers[0] = "stephen was here";
@@ -68,11 +68,11 @@ int decrypter; //decryption formula
     string ci4 = ciphers[3] = "operation nimord is a go";
     string ci5 = ciphers[4] = "geronimo geronimo geronimo";
 
-
+string encryptgemini = " ";//holder for the new encrypted message
+  string decryptapollo = " "; //holfer for decrypted message
 
 public: //public class
-  string encryptgemini;//holder for the new encrypted message
-  string decryptapollo = " "; //holfer for decrypted message
+  
 
 //reg encryption
 void encryption(){
@@ -94,7 +94,7 @@ if(conversionchart[j] == ci1[i]){
            encrypter = (j+15)%26;
         
         
-          // cout << encrypter << endl;	
+         //  cout << encrypter << endl;	
 
         //conversion chart is equivlanet to encrypter value
 if(j = encrypter){
@@ -105,13 +105,16 @@ if(j = encrypter){
 }
 } 
 }
-//cout <<" message: " << gemini << " "; //actual encrypted message
+cout <<" message: " << encryptgemini << " "; //actual encrypted message
 }
+
+
+//generator actual
 
 //decipher
 //attempt to view the entire decrpytion message
 void decipher(){
-cout <<"Encrypted message: " << encryptgemini << " "; // encrypted message
+//cout <<"Encrypted message: " << encryptgemini << " "; // encrypted message
 
 
 for( s = 0; s < encryptgemini.length(); s++){ // first statment 
@@ -130,26 +133,72 @@ if(conversionchart[t] == encryptgemini[s] ){
           // cout << encrypter << endl;	
 
         //conversion chart is equivlanet to encrypter value
-if( t = decrypter  ){
+
 // decrypter number is equal to conversion chat index
-         decrypter = conversionchart[t];
+         decrypter = conversionchart[decrypter];
          decryptapollo += decrypter; // converts the number to a string
-     }
+
 }
 } 
 } 
 cout << endl;
 cout <<"decrypted message: " << decryptapollo << " "; //actual encrypted message
+
+}
+//message actual
+void generatoractual(){
+  string userchoice;//user option
+  int tries = 0;
+    cout << "Actual message: " << encryptgemini << " "; //actual message
+    
+    cout << endl;
+    
+do{
+   cout << "What is the decrypted message" << endl;
+    getline(cin,userchoice); //gets
+    if(userchoice == decryptapollo){ 
+      cout << "Correct!" << endl;
+      break;
+}else {
+  cout << "Incorrect, try again" << endl;
+  tries++;
 }
 
-//amount of hints/ hints for each messages
-void hints(){
+}while(tries < 3);
 
-
-
+cout << "Answer: " << decryptapollo << endl;
 
 }
 };
+
+
+
+/*
+
+TODO: 
+    1. 3x tries to decipher <-
+    2. if user fails, answer is revealed<-
+    3. user can try again (might have to do a random generator, as oppossed to same ans)
+    4. user can quit
+    5. user can get hint
+    6. user can get answer
+    9. user can get new game with new phrase
+
+    basic idea:
+    reveal message
+    ask the user what is the decrypted message
+    has 3 tries
+    after the 2nd try, they will get a hint
+    after the 3rd try, they will get the answer
+
+    user will be asked to play again or quit. Will output a different message.
+    same process, until user quits the game.
+   */
+
+
+
+
+
 
 // main class
 int main(){
@@ -160,8 +209,9 @@ regciphers encrypter;
 encrypter.encryption();
 //cout << endl;
 encrypter.decipher();
-cout << endl;
 
+cout << endl;
+ //encrypter.generatoractual();
 
     return 0;
 }
