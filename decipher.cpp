@@ -63,13 +63,13 @@ char decrypter; //decryption formula
    //ciphers
     //string ci1 = ciphers[0] = "stephen was here";
     string ci1 = ciphers[0] = "stephen was here";
-    string ci2 = ciphers[1] = " sly fox, try pox, old slots";
+    string ci2 = ciphers[1] = "sly fox, try pox, old slots";
     string ci3 = ciphers[2] = "the quick brown fox jumps over the lazy dog";
-    string ci4 = ciphers[3] = "operation nimord is a go";
+    string ci4 = ciphers[3] = "operation nimrod is a go";
     string ci5 = ciphers[4] = "geronimo geronimo geronimo";
 
 string encryptgemini = " ";//holder for the new encrypted message
-  string decryptapollo = " "; //holfer for decrypted message
+string decryptapollo = " "; //holfer for decrypted message
 
 public: //public class
   
@@ -80,12 +80,12 @@ void encryption(){
 //cout << "Reg Message: " << ci1 << endl;
 //cout << endl;
 //find way to encrypt properly from first phrase to alphapet with caesars cipher PROPERLY
-for( i = 0; i < ci1.length(); i++){ // first statment 
+for( i = 0; i < ci4.length(); i++){ // first statment 
  for( j =0; j<26; j++){ //caesar converstion
 
 //if the conversionchart and phrase have the same character
-if(conversionchart[j] == ci1[i]){
-    ci1[i] = j; // character of sentence is equivalent to conversion chart letter
+if(conversionchart[j] == ci4[i]){
+    ci4[i] = j; // character of sentence is equivalent to conversion chart letter
 
   
          //cout << j << " " ; //phrase is seperated into numbers
@@ -148,27 +148,47 @@ cout <<"decrypted message: " << decryptapollo << " "; //actual encrypted message
 //message actual
 void generatoractual(){
   string userchoice;//user option
+  string userinput;
   int tries = 0;
-    cout << "Actual message: " << encryptgemini << " "; //actual message
-    
-    cout << endl;
-    
-do{
-   cout << "What is the decrypted message" << endl;
-    getline(cin,userchoice); //gets
-    if(userchoice == decryptapollo){ 
-      cout << "Correct!" << endl;
-      break;
-}else {
-  cout << "Incorrect, try again" << endl;
+
+ 
+while(true){
+  
+  cout << "Please enter your guess:" << endl;
+
+getline(cin,userchoice); //gets
+
+
+if(userchoice == decryptapollo){
+  break;
+    cout << "You have correctly decrypted the message!" << endl;
+  cout << "Answer: " << decryptapollo << endl;
+  }if(!(userchoice == decryptapollo)){
   tries++;
+  cout << "Incorrect. Please Try Again." << endl;
+  }
+
+
+
+  if(tries == 3){
+    cout << "You have failed to decrypt the message." << endl;
+    cout << "Answer: " << decryptapollo << endl;
+    break;
+
+  }
+  
+  
+   if(userchoice == "exit"){
+    cout << "You have exited the game." << endl;
+    break;
+
+   
+   }
+}
 }
 
-}while(tries < 3);
 
-cout << "Answer: " << decryptapollo << endl;
 
-}
 };
 
 
@@ -176,12 +196,12 @@ cout << "Answer: " << decryptapollo << endl;
 /*
 
 TODO: 
-    1. 3x tries to decipher <-
-    2. if user fails, answer is revealed<-
-    3. user can try again (might have to do a random generator, as oppossed to same ans)
-    4. user can quit
+    1. 3x tries to decipher <-✅
+    2. if user fails, answer is revealed<-✅
+    3. user can try again (might have to do a random generator, as oppossed to same ans)✅
+    4. user can quit✅
     5. user can get hint
-    6. user can get answer
+    6. user can get answer✅
     9. user can get new game with new phrase
 
     basic idea:
@@ -205,13 +225,17 @@ int main(){
 
 //object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
-
+cout << "Actual message:" << endl; //actual message
 encrypter.encryption();
-//cout << endl;
+cout << endl;
 encrypter.decipher();
 
 cout << endl;
- //encrypter.generatoractual();
+ encrypter.generatoractual();
 
     return 0;
 }
+
+
+
+
