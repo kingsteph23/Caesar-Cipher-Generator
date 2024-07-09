@@ -149,41 +149,58 @@ cout <<"decrypted message: " << decryptapollo << " "; //actual encrypted message
 void generatoractual(){
   string userchoice;//user option
   string userinput;
-  int tries = 0;
+  int tries = 0; // incrementer
+  //while loop for game.
+ while(true){
+  cout << "Would you like to play a game?" << endl;
+  cout << "Type 'yes' to play or 'exit' to quit." << endl;
+  getline(cin,userinput);
+  // if user exits the game
+  if(userinput == "exit"){
+    cout << "You have exited the game." << endl;
+    break;
+  }
 
- 
-while(true){
+  //if user wishes to proceed with the game.
+  if(userinput == "yes"){
+    cout << "You have chosen to play the game." << endl;
+   tries = 0;// for each time the user decides the play game, counter resets to 0.
+ while(tries != 3){
   
+//user input for the game
   cout << "Please enter your guess:" << endl;
 
-getline(cin,userchoice); //gets
+getline(cin,userchoice); //user input
 
-
+// if user successflly deciphers correctly.
 if(userchoice == decryptapollo){
-  break;
     cout << "You have correctly decrypted the message!" << endl;
+     break;
   cout << "Answer: " << decryptapollo << endl;
-  }if(!(userchoice == decryptapollo)){
+  //for each time the user gets the decipher wrong, the incrementer goes up. If incrememnter == 3, game over
+  }else if(!(userchoice == decryptapollo)){
+    cout << "Incorrect. Please Try Again." << endl;
   tries++;
-  cout << "Incorrect. Please Try Again." << endl;
   }
 
 
-
+//if the increment equals 3, the loop breaks, and the user didn't decipher the code properly.
   if(tries == 3){
     cout << "You have failed to decrypt the message." << endl;
     cout << "Answer: " << decryptapollo << endl;
-    break;
 
   }
   
-  
-   if(userchoice == "exit"){
-    cout << "You have exited the game." << endl;
-    break;
 
-   
-   }
+ }
+  }
+  //if user enters invalid input
+  if(userinput != "yes" || userinput != "exit"){
+    cout << "Invalid input. Please try again." << endl;
+  
+ }
+
+  
 }
 }
 
@@ -198,7 +215,7 @@ if(userchoice == decryptapollo){
 TODO: 
     1. 3x tries to decipher <-✅
     2. if user fails, answer is revealed<-✅
-    3. user can try again (might have to do a random generator, as oppossed to same ans)✅
+    3. user can try again (might have to do a random generator, as oppossed to same ans)
     4. user can quit✅
     5. user can get hint
     6. user can get answer✅
@@ -226,12 +243,12 @@ int main(){
 //object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
 cout << "Actual message:" << endl; //actual message
-encrypter.encryption();
+encrypter.encryption(); //  encryption algorithm
 cout << endl;
-encrypter.decipher();
+encrypter.decipher(); //decipher algorithm
 
 cout << endl;
- encrypter.generatoractual();
+ encrypter.generatoractual(); // object for the game
 
     return 0;
 }
