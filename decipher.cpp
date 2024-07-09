@@ -183,6 +183,11 @@ if(userchoice == decryptapollo){
   tries++;
   }
 
+// hint appears after 2nd failed attempt. Has first 3 letters, and last 3 letters
+if(tries == 2){
+  cout << "Hint: The Phrase Starts with "<< decryptapollo[1]<< decryptapollo[2]<<decryptapollo[3] << " and ends with " 
+ << decryptapollo[decryptapollo.length()-3]<< decryptapollo[decryptapollo.length()-2]<< decryptapollo[decryptapollo.length()-1]<< endl;
+}
 
 //if the increment equals 3, the loop breaks, and the user didn't decipher the code properly.
   if(tries == 3){
@@ -217,7 +222,7 @@ TODO:
     2. if user fails, answer is revealed<-✅
     3. user can try again (might have to do a random generator, as oppossed to same ans)
     4. user can quit✅
-    5. user can get hint
+    5. user can get hint✅
     6. user can get answer✅
     9. user can get new game with new phrase
 
@@ -248,7 +253,7 @@ cout << endl;
 encrypter.decipher(); //decipher algorithm
 
 cout << endl;
- encrypter.generatoractual(); // object for the game
+ encrypter.generatoractual(); // object for the
 
     return 0;
 }
