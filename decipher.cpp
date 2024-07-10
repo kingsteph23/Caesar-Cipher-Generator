@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 //decipher function✅
@@ -47,7 +49,7 @@ find the ciphers/ and make a the foundations of everything(a class/ciphers)
 
 class regciphers{
 
-string ciphers[10]; //cipher messages 
+//string ciphers[10]; //cipher messages 
 char conversionchart[26] = {'a','b','c','d','e','f'
 , 'g', 'h','i','j','k','l',
 'm','n','o','p','q','r','s',
@@ -62,17 +64,26 @@ char encrypter;//encrpyter formula
 char decrypter; //decryption formula
    //ciphers
     //string ci1 = ciphers[0] = "stephen was here";
-    string ci1 = ciphers[0] = "stephen was here";
-    string ci2 = ciphers[1] = "sly fox, try pox, old slots";
-    string ci3 = ciphers[2] = "the quick brown fox jumps over the lazy dog";
-    string ci4 = ciphers[3] = "operation nimrod is a go";
-    string ci5 = ciphers[4] = "geronimo geronimo geronimo";
-
+   
+//array of phrases
+string ciphers[5] = {"stephen was here","sly fox, try pox, old slots"
+,"the quick brown fox jumps over the lazy dog","operation nimrod is a go",
+ "geronimo geronimo geronimo"}; //ciphers
+int randomciphers; //random ciphers
 string encryptgemini = " ";//holder for the new encrypted message
 string decryptapollo = " "; //holfer for decrypted message
 
 public: //public class
   
+  //function that allows different phrases to print out.
+  void randomizer(){
+
+//srand
+srand(time(0));
+randomciphers = rand()%5; //random ciphers
+
+
+  }
 
 //reg encryption
 void encryption(){
@@ -80,12 +91,12 @@ void encryption(){
 //cout << "Reg Message: " << ci1 << endl;
 //cout << endl;
 //find way to encrypt properly from first phrase to alphapet with caesars cipher PROPERLY
-for( i = 0; i < ci4.length(); i++){ // first statment 
+for( i = 0; i < ciphers[randomciphers].length(); i++){ // first statment 
  for( j =0; j<26; j++){ //caesar converstion
 
 //if the conversionchart and phrase have the same character
-if(conversionchart[j] == ci4[i]){
-    ci4[i] = j; // character of sentence is equivalent to conversion chart letter
+if(conversionchart[j] == ciphers[randomciphers][i]){
+    ciphers[randomciphers][i] = j; // character of sentence is equivalent to conversion chart letter
 
   
          //cout << j << " " ; //phrase is seperated into numbers
@@ -220,11 +231,11 @@ if(tries == 2){
 TODO: 
     1. 3x tries to decipher <-✅
     2. if user fails, answer is revealed<-✅
-    3. user can try again (might have to do a random generator, as oppossed to same ans)
+    3. ✅user can try again (might have to do a random generator, as oppossed to same ans)
     4. user can quit✅
     5. user can get hint✅
     6. user can get answer✅
-    9. user can get new game with new phrase
+    9. user can get new game with new phrase✅
 
     basic idea:
     reveal message
@@ -245,15 +256,18 @@ TODO:
 // main class
 int main(){
 
+
 //object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
+encrypter.randomizer(); // generates random messages
+cout << endl;
 cout << "Actual message:" << endl; //actual message
 encrypter.encryption(); //  encryption algorithm
 cout << endl;
 encrypter.decipher(); //decipher algorithm
 
 cout << endl;
- encrypter.generatoractual(); // object for the
+ encrypter.generatoractual(); // object for the actual
 
     return 0;
 }
