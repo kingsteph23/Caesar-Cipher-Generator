@@ -6,45 +6,6 @@
 #include <ctime>
 using namespace std;
 
-//decipher function✅
-//list of potiental deciphers✅
-//each are random
-// game goes up to x amount of times
-
-//some random decipher is based on potiental pre made phrase✅
-//user has 3x tries to decipher, than answer is revealved
-//might have option to  
-
-
-/*
-    1. 3x tries to decipher
-    2. if user fails, answer is revealed
-    3. user can try again
-    4. user can quit
-    5. user can get hint
-    6. user can get answer
-    9. user can get new game with new phrase
-   
-
-arcthype:
-
-class:
-global variables for instances
-
-functions for automations(amount of tries, hints, answers, etc.)
-//reg ciphers
-//stephen was here
-// sly fox, try pox, old slots
-//the quick brown fox jumps over the lazy dog
-//operation nimord is a go
-//Geronimo Geronimo Geronimo,
-
-tues:
-find the ciphers/ and make a the foundations of everything(a class/ciphers)
-
-*/
-
-
 //class
 
 class regciphers{
@@ -78,8 +39,8 @@ public: //public class
   //function that allows different phrases to print out.
   void randomizer(){
 
-//srand
 srand(time(0));
+
 randomciphers = rand()%5; //random ciphers
 
 
@@ -97,16 +58,10 @@ for( i = 0; i < ciphers[randomciphers].length(); i++){ // first statment
 //if the conversionchart and phrase have the same character
 if(conversionchart[j] == ciphers[randomciphers][i]){
     ciphers[randomciphers][i] = j; // character of sentence is equivalent to conversion chart letter
-
-  
-         //cout << j << " " ; //phrase is seperated into numbers
             
            //formula to encrypt the phrase
            encrypter = (j+15)%26;
         
-        
-         //  cout << encrypter << endl;	
-
         //conversion chart is equivlanet to encrypter value
 if(j = encrypter){
 // encrypter number is equal to conversion chat index
@@ -116,7 +71,7 @@ if(j = encrypter){
 }
 } 
 }
-cout <<" message: " << encryptgemini << " "; //actual encrypted message
+cout <<"Encrypted message: " << encryptgemini << " "; //actual encrypted message
 }
 
 
@@ -127,7 +82,6 @@ cout <<" message: " << encryptgemini << " "; //actual encrypted message
 void decipher(){
 //cout <<"Encrypted message: " << encryptgemini << " "; // encrypted message
 
-
 for( s = 0; s < encryptgemini.length(); s++){ // first statment 
  for( t =0; t<26; t++){ //caesar converstion
 
@@ -135,14 +89,9 @@ for( s = 0; s < encryptgemini.length(); s++){ // first statment
 if(conversionchart[t] == encryptgemini[s] ){
       encryptgemini[s] = t ; // character of sentence is equivalent to conversion chart letter
 
-  
-         //cout << j << " " ; //phrase is seperated into numbers
-            
            //formula to encrypt the phrase
            decrypter =  (t-15 +26)%26;
-        
-          // cout << encrypter << endl;	
-
+    
         //conversion chart is equivlanet to encrypter value
 
 // decrypter number is equal to conversion chat index
@@ -153,16 +102,23 @@ if(conversionchart[t] == encryptgemini[s] ){
 } 
 } 
 cout << endl;
-cout <<"decrypted message: " << decryptapollo << " "; //actual encrypted message
+//cout <<"decrypted message: " << decryptapollo << " "; //actual encrypted message
 
 }
 //message actual
 void generatoractual(){
+
   string userchoice;//user option
   string userinput;
-  int tries = 0; // incrementer
-  //while loop for game.
- while(true){
+  int tries = 1; // incrementer
+  int maxamount = 0; // maximum amount
+   //while loop for game.
+  while(true){
+//user can only place game once before exiting
+    if(maxamount == 1){
+      cout << "You have reached the maximum amount of times you can use this game." << endl;
+      exit(0);
+    }
   cout << "Would you like to play a game?" << endl;
   cout << "Type 'yes' to play or 'exit' to quit." << endl;
   getline(cin,userinput);
@@ -186,8 +142,7 @@ getline(cin,userchoice); //user input
 // if user successflly deciphers correctly.
 if(userchoice == decryptapollo){
     cout << "You have correctly decrypted the message!" << endl;
-     break;
-  cout << "Answer: " << decryptapollo << endl;
+  exit(0);
   //for each time the user gets the decipher wrong, the incrementer goes up. If incrememnter == 3, game over
   }else if(!(userchoice == decryptapollo)){
     cout << "Incorrect. Please Try Again." << endl;
@@ -204,7 +159,8 @@ if(tries == 2){
   if(tries == 3){
     cout << "You have failed to decrypt the message." << endl;
     cout << "Answer: " << decryptapollo << endl;
-
+    exit(0);
+  maxamount++;
   }
   
 
@@ -225,49 +181,18 @@ if(tries == 2){
 };
 
 
-
-/*
-
-TODO: 
-    1. 3x tries to decipher <-✅
-    2. if user fails, answer is revealed<-✅
-    3. ✅user can try again (might have to do a random generator, as oppossed to same ans)
-    4. user can quit✅
-    5. user can get hint✅
-    6. user can get answer✅
-    9. user can get new game with new phrase✅
-
-    basic idea:
-    reveal message
-    ask the user what is the decrypted message
-    has 3 tries
-    after the 2nd try, they will get a hint
-    after the 3rd try, they will get the answer
-
-    user will be asked to play again or quit. Will output a different message.
-    same process, until user quits the game.
-   */
-
-
-
-
-
-
 // main class
 int main(){
-
 
 //object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
 encrypter.randomizer(); // generates random messages
-cout << endl;
-cout << "Actual message:" << endl; //actual message
 encrypter.encryption(); //  encryption algorithm
 cout << endl;
 encrypter.decipher(); //decipher algorithm
 
 cout << endl;
- encrypter.generatoractual(); // object for the actual
+encrypter.generatoractual(); // object for the actual
 
     return 0;
 }
