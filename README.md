@@ -6,7 +6,8 @@ If the user choices to exit the program:
 
 
 If the user doesn't successfully decipher the program after 3 tries.
-![Screenshot 2024-07-12 200939](https://github.com/user-attachments/assets/44ad8428-57ac-44f9-a748-55d0774af697)
+![Screenshot 2024-07-12 200817](https://github.com/user-attachments/assets/bfea473c-8813-4ae6-b9cc-502b8d5913c4)
+
 
 If user successfully deciphers the message:
 ![Screenshot 2024-07-12 205653](https://github.com/user-attachments/assets/a6fcfaac-09f9-43ea-bc86-d96bf8b90d04)
