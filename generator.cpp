@@ -14,15 +14,14 @@ char conversionchart[26] = {'a','b','c','d','e','f'
 , 'g', 'h','i','j','k','l',
 'm','n','o','p','q','r','s',
 't','u','v','w','x','y','z'}; //conversion chart
-int tries;//user has 3 tries
 int i; // for loop for message
 int j; //for loop for conversion chart
 
 int s;// for loop for decrypted message
 int t;// for loop for decrypted conversion chart
 char encrypter;//encrpyter formula
-char decrypter; //decryption formula
-  
+unsigned char decrypter; //decryption formula
+
 //array of phrases
 string ciphers[5] = {"stephen was here",
 "sly fox try pox old slots"
@@ -34,7 +33,7 @@ string encryptgemini = " ";//holder for the new encrypted message
 string decryptapollo = " "; //holfer for decrypted message
 
 public: //public class
-  
+
   //function that allows different phrases to print out.
   void randomizer(){
 
@@ -47,7 +46,7 @@ randomciphers = rand()%5; //random ciphers
 
 //reg encryption
 void encryption(){
- 
+
 //find way to encrypt properly from first phrase to alphapet with caesars cipher PROPERLY
 for( i = 0; i < ciphers[randomciphers].length(); i++){ // first statment 
  for( j =0; j<26; j++){ //caesar converstion
@@ -55,12 +54,12 @@ for( i = 0; i < ciphers[randomciphers].length(); i++){ // first statment
 //if the conversionchart and phrase have the same character
 if(conversionchart[j] == ciphers[randomciphers][i]){
     ciphers[randomciphers][i] = j; // character of sentence is equivalent to conversion chart letter
-            
+
            //formula to encrypt the phrase
            encrypter = (j+15)%26;
-        
+
         //conversion chart is equivlanet to encrypter value
-if(j = encrypter){
+if((j = encrypter)){
 // encrypter number is equal to conversion chat index
          encrypter = conversionchart[j];
          encryptgemini += encrypter; // converts the number to a string
@@ -88,7 +87,7 @@ if(conversionchart[t] == encryptgemini[s] ){
 
            //formula to encrypt the phrase
            decrypter =  (t-15 +26)%26;
-    
+
         //conversion chart is equivlanet to encrypter value
 
 // decrypter number is equal to conversion chat index
@@ -130,7 +129,7 @@ void generatoractual(){
     cout << "You have chosen to use the generator." << endl;
    tries = 0;// for each time the user decides the play game, counter resets to 0.
  while(tries != 3){
-  
+
 //user input for the game
   cout << "Please enter your guess:" << endl;
 
@@ -159,17 +158,17 @@ if(tries == 2){
     exit(0);
   maxamount++;
   }
-  
+
 
  }
   }
   //if user enters invalid input
   if(userinput != "yes" || userinput != "exit"){
     cout << "Invalid input. Please try again." << endl;
-  
+
  }
 
-  
+
 }
 }
 
@@ -184,15 +183,16 @@ int main(){
   cout << "-----------------------" << endl;
   cout << "Caesar Cipher Generator" << endl;
   cout << "-----------------------" << endl;
-  
+
   cout << endl;
   //Things to know when playing game
   cout << "*Please read the following information before starting*" << endl;
 cout << "*When inputting the phrase, please make sure to input the phrase in lowercase.*" << endl;
 cout << "*Also, please make sure to input the phrase with no spaces.*" << endl;
-cout << "*Also, when inputting the phrase, click the space button once, and proceed to input the phrase.*" << endl;
+cout << "*Also, when you are guessing the phrase, click the space button once, and proceed to input the phrase.*" << endl;
 cout << "*You can only use the generator once. If you wish to restart, please restart the program.*" << endl;
 cout << "*Overtime, I will add more phrases to the generator.*" << endl;
+  cout << endl;
 //object of the dicpher class. Just testing if the encryption is accurate
 regciphers encrypter;
 encrypter.randomizer(); // generates random messages
